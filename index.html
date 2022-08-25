@@ -5,17 +5,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Prompt:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
     <title>Eldritch Horror</title>
 </head>
 <body>
-    <div class="ancients">
+    <div class="ancients-block">
+        <div class="ancients-header"></div>
+        <div class="ancients">
         <div class="ancient ancient1"><div class="close close-hidden"></div></div>
         <div class="ancient ancient2"><div class="close close-hidden"></div></div>
         <div class="ancient ancient3"><div class="close close-hidden"></div></div>
         <div class="ancient ancient4"><div class="close close-hidden"></div></div>
+        </div>
     </div>
-    <div class="complexity"></div>
-    <div class="game-zone"></div>
-    <script type="module" src="/index.js"></script>
+    <div class="complexity complexity-hidden">
+        <div class="complexity-title">Select complexity</div>
+        <div class="complexity-levels">
+            <div class="level">Ultra Easy</div>
+            <div class="level">Easy</div>
+            <div class="level">Normal</div>
+            <div class="level">Hard</div>
+            <div class="level">Ultra Hard</div>
+        </div>
+    </div>
+    <div class="game-zone">
+        <div class="scheme">
+            <div class="scheme-title">Scheme</div>
+            <div class="scheme-table">
+                <div class="stage"><div class="stage-name">Stage 1</div><div class="stage-item green"></div><div class="stage-item brown"></div><div class="stage-item blue"></div></div>
+                <div class="stage"><div class="stage-name">Stage 2</div><div class="stage-item green"></div><div class="stage-item brown"></div><div class="stage-item blue"></div></div>
+                <div class="stage"><div class="stage-name">Stage 3</div><div class="stage-item green"></div><div class="stage-item brown"></div><div class="stage-item blue"></div></div>
+            </div>
+        </div>
+        <div class="flipping"></div>
+    </div>
+    <script type="module" src="index.js"></script>
+    
 </body>
 </html>
