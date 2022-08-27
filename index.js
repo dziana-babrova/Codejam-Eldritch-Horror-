@@ -290,7 +290,7 @@ function pickCardForStage(number, deck, target) {
 
 async function showCard() {
   if (cardStack.length > 0) {
-    currentCard = cardStack.pop()
+    currentCard = await cardStack.pop()
     const img = new Image();
     img.src = `${await currentCard.cardFace}`;
     img.onload = () => {
