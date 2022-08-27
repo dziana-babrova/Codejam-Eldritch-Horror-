@@ -14,7 +14,7 @@ body {
     overflow: hidden;
 }
 
-.ancients-header, .scheme-title, .complexity-title, .flipping-header {
+.ancients-header, .scheme-title, .complexity-title, .flipping-header, .game-finished-title, .game-finished-button {
     font-family: Prompt, Bebas neue;
     font-size: xx-large;
     font-weight: 700;
@@ -91,7 +91,7 @@ body {
     transition: opacity 0.3s, visibility 0.3s, position 0.5s;
 }
 
-.close {
+.close, .close-card {
     margin: 10px;
     width: 40px;
     height: 40px;
@@ -101,12 +101,12 @@ body {
     transition: transform 0.3s, opacity 0.3s, visibility 0.5s ;
 }
 
-.close:hover {
+.close:hover, .close-card:hover {
     transform:scale(0.9);
     transition: transform 0.5;
 }
 
-.close-hidden {
+.close-hidden, .close-card-hidden {
     visibility: collapse;
     transition: transform 0.3s, opacity 0.1s, visibility 0.1s;
 }
@@ -236,6 +236,13 @@ box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(189, 27, 189, 0.6);}
     row-gap: 40px;
     position: relative;
     margin-top: 10px;
+    transition: opacity 0.5s ease-in-out, visibility 0.4s;
+}
+
+.flipping-hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s;
 }
 
 .card-background {
@@ -247,6 +254,7 @@ box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(189, 27, 189, 0.6);}
     align-self: center;
     position: relative;
     right: 20px;
+    cursor: pointer;
 }
 
 .card-face {
@@ -256,4 +264,68 @@ box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(189, 27, 189, 0.6);}
     position: absolute;
     bottom: 10%;
     right: 20%;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease, transform 0.3s ease-in, background-image 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0.4s;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.card-face:hover {
+    transform: scale(1.1);
+}
+
+.card-face-zoomed {
+    transform: scale(1.4);
+    bottom: 25%;
+    left: 33%;
+}
+
+.card-face-zoomed:hover {
+    transform: scale(1.4);
+    bottom: 25%;
+    left: 33%;
+}
+
+.face-hidden, .back-hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s;
+}
+
+
+.flipping-header, .game-finished-button {
+    background-color: rgba(138, 20, 98, 0.705);
+    border: rgba(250, 250, 250, 0.493) solid 2px;
+    border-radius: 10px;
+    padding: 0px 10px;
+    cursor: pointer;
+    transition: transform 0.5s ease-out;
+}
+
+.flipping-header:hover, .game-finished-button:hover {
+    transform: scale(1.05);
+}
+
+.flipping-disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.game-finished {
+    visibility: hidden;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-self: center;
+    top: 20%;
+}
+
+.game-finished-visible {
+    visibility: visible;
+}
+
+.game-finished-button {
+    font-size: x-large;
 }
