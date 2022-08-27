@@ -17,6 +17,7 @@ const cardFace = document.querySelector(".card-face");
 const finish = document.querySelector(".game-finished");
 const finishButton = document.querySelector(".game-finished-button");
 const closeCard = document.querySelector(".close-card");
+const stage = document.querySelectorAll(".stage");
 
 let enemy;
 let scheme = [
@@ -33,6 +34,7 @@ let stage1Cards = [];
 let stage2Cards = [];
 let stage3Cards = [];
 let cardStack = [];
+let currentCard;
 
 ancient.forEach((el, index) => {
   el.addEventListener("click", function zoomAncient(e) {
@@ -215,6 +217,8 @@ levels.forEach((el, index) => {
     stage1Cards = [];
     stage2Cards = [];
     stage3Cards = [];
+    createGameSchemeArray()
+    createGameScheme();
     pickCards();
 
     console.log(`Green cards with complexity ${chosenComplexity}:`);
@@ -286,10 +290,13 @@ function pickCardForStage(number, deck, target) {
 
 function showCard() {
   if (cardStack.length > 0) {
+    currentCard = cardStack.pop()
     const img = new Image();
-    img.src = `${cardStack.pop().cardFace}`;
+    img.src = `${currentCard.cardFace}`;
     img.onload = () => {
       cardFace.style.backgroundImage = `url('${img.src}')`;
+      console.log(currentCard);
+      countTracker();
     };
     cardFace.classList.remove("face-hidden");
   } else {
@@ -297,6 +304,7 @@ function showCard() {
     cardBack.classList.add("back-hidden");
     flipButton.classList.add("flipping-disabled");
     finish.classList.add("game-finished-visible");
+    stage.forEach((el) => el.classList.remove("stage-current"));
   }
 }
 
@@ -314,3 +322,44 @@ closeCard.addEventListener("click", function () {
   cardFace.classList.remove("card-face-zoomed");
   closeCard.classList.add("close-card-hidden");
 });
+
+function countTracker() {
+  if (scheme[0][0] + scheme[0][1] + scheme[0][2]) {
+    if (currentCard.color === "green") {
+      scheme[0][0]--;
+    } else if (currentCard.color === "brown") {
+      scheme[0][1]--;
+    } else if (currentCard.color === "blue") {
+      scheme[0][2]--;
+    }
+
+    stage.forEach((el) => el.classList.remove("stage-current"));
+    stage[0].classList.add("stage-current");
+
+  } else if (scheme[1][0] + scheme[1][1] + scheme[1][2]) {
+    if (currentCard.color === "green") {
+      scheme[1][0]--;
+    } else if (currentCard.color === "brown") {
+      scheme[1][1]--;
+    } else if (currentCard.color === "blue") {
+      scheme[1][2]--;
+    }
+    
+    stage.forEach((el) => el.classList.remove("stage-current"));
+    stage[1].classList.add("stage-current");
+
+  } else if (scheme[2][0] + scheme[2][1] + scheme[2][2]) {
+    if (currentCard.color === "green") {
+      scheme[2][0]--;
+    } else if (currentCard.color === "brown") {
+      scheme[2][1]--;
+    } else if (currentCard.color === "blue") {
+      scheme[2][2]--;
+    }
+    
+    stage.forEach((el) => el.classList.remove("stage-current"));
+    stage[2].classList.add("stage-current");
+
+  }
+  createGameScheme();
+}

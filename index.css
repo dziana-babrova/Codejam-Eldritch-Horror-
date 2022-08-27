@@ -186,7 +186,7 @@ box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(189, 27, 189, 0.6);}
     flex-direction: column;
     align-self: center;
     row-gap: 20px;
-    opacity: 0.5;
+    opacity: 1;
 }
 
 .stage {
@@ -203,6 +203,10 @@ box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(189, 27, 189, 0.6);}
 
 .stage-name {
     width: 120px;
+}
+
+.stage-current {
+    color:rgba(250, 250, 250, 0.925);
 }
 
 .stage-item {
