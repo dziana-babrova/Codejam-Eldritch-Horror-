@@ -288,11 +288,11 @@ function pickCardForStage(number, deck, target) {
   }
 }
 
-function showCard() {
+async function showCard() {
   if (cardStack.length > 0) {
     currentCard = cardStack.pop()
     const img = new Image();
-    img.src = `${currentCard.cardFace}`;
+    img.src = `${await currentCard.cardFace}`;
     img.onload = () => {
       cardFace.style.backgroundImage = `url('${img.src}')`;
       console.log(currentCard);
