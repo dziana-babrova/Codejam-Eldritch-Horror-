@@ -210,6 +210,7 @@ levels.forEach((el, index) => {
     finish.classList.remove("game-finished-visible");
     cardFace.classList.remove("card-face-zoomed");
     closeCard.classList.add("close-card-hidden");
+    stage.forEach((el) => el.classList.remove("stage-current"));
     stage1Cards = [];
     stage2Cards = [];
     stage3Cards = [];
