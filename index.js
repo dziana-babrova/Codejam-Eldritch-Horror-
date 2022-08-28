@@ -98,15 +98,11 @@ applyAncientsHeader();
 
 function createGameSchemeArray() {
   if (enemy === undefined) {
-    scheme[0][0] = 0;
-    scheme[0][1] = 0;
-    scheme[0][2] = 0;
-    scheme[1][0] = 0;
-    scheme[1][1] = 0;
-    scheme[1][2] = 0;
-    scheme[2][0] = 0;
-    scheme[2][1] = 0;
-    scheme[2][2] = 0;
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
+        scheme[i][j] = 0;
+      }
+    }
   } else {
     scheme[0][0] = enemy.firstStage.greenCards;
     scheme[0][1] = enemy.firstStage.brownCards;
@@ -214,6 +210,7 @@ levels.forEach((el, index) => {
     finish.classList.remove("game-finished-visible");
     cardFace.classList.remove("card-face-zoomed");
     closeCard.classList.add("close-card-hidden");
+    stage.forEach((el) => el.classList.remove("stage-current"));
     stage1Cards = [];
     stage2Cards = [];
     stage3Cards = [];
@@ -324,42 +321,23 @@ closeCard.addEventListener("click", function () {
 });
 
 function countTracker() {
-  if (scheme[0][0] + scheme[0][1] + scheme[0][2]) {
-    if (currentCard.color === "green") {
-      scheme[0][0]--;
-    } else if (currentCard.color === "brown") {
-      scheme[0][1]--;
-    } else if (currentCard.color === "blue") {
-      scheme[0][2]--;
+  outer: for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 3; j++) {
+      stage.forEach((el) => el.classList.remove("stage-current"));
+      stage[i].classList.add("stage-current");
+      while (scheme[i][0] + scheme[i][1] + scheme[i][2] > 0) {
+        if (currentCard.color === "green") {
+          scheme[i][0]--;
+          break outer;
+        } else if (currentCard.color === "brown") {
+          scheme[i][1]--;
+          break outer;
+        } else if (currentCard.color === "blue") {
+          scheme[i][2]--;
+          break outer;
+        }
+      }
     }
-
-    stage.forEach((el) => el.classList.remove("stage-current"));
-    stage[0].classList.add("stage-current");
-
-  } else if (scheme[1][0] + scheme[1][1] + scheme[1][2]) {
-    if (currentCard.color === "green") {
-      scheme[1][0]--;
-    } else if (currentCard.color === "brown") {
-      scheme[1][1]--;
-    } else if (currentCard.color === "blue") {
-      scheme[1][2]--;
-    }
-    
-    stage.forEach((el) => el.classList.remove("stage-current"));
-    stage[1].classList.add("stage-current");
-
-  } else if (scheme[2][0] + scheme[2][1] + scheme[2][2]) {
-    if (currentCard.color === "green") {
-      scheme[2][0]--;
-    } else if (currentCard.color === "brown") {
-      scheme[2][1]--;
-    } else if (currentCard.color === "blue") {
-      scheme[2][2]--;
-    }
-    
-    stage.forEach((el) => el.classList.remove("stage-current"));
-    stage[2].classList.add("stage-current");
-
   }
   createGameScheme();
 }
