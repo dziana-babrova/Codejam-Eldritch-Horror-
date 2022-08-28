@@ -53,22 +53,22 @@ body {
 }
 
 .ancient1 {
-    background-image: url("./assets/Ancients/Azathoth.png");
+    background-image: url("./assets/Ancients/Azathoth.jpg");
     background-size: cover;
 }
 
 .ancient2 {
-    background-image: url("./assets/Ancients/Cthulthu.png");
+    background-image: url("./assets/Ancients/Cthulthu.jpg");
     background-size: cover;
 }
 
 .ancient3 {
-    background-image: url("./assets/Ancients/IogSothoth.png");
+    background-image: url("./assets/Ancients/IogSothoth.jpg");
     background-size: cover;
 }
 
 .ancient4 {
-    background-image: url("./assets/Ancients/ShubNiggurath.png");
+    background-image: url("./assets/Ancients/ShubNiggurath.jpg");
     background-size: cover;
 }
 
